@@ -1,0 +1,24 @@
+{
+  "name": "react-native-android-design-support",
+  "version": "0.0.1",
+  "description": "React Native wrapper for Android Design Support Library, providing Material Design to modern and also older Android devices.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neson/react-native-android-design-support.git"
+  },
+  "keywords": [
+    "react-native",
+    "android",
+    "material-design"
+  ],
+  "author": "Neson <neson@dex.tw>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Neson/react-native-android-design-support/issues"
+  },
+  "homepage": "https://github.com/Neson/react-native-android-design-support#readme"
+}
