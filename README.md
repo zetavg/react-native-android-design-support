@@ -2,6 +2,12 @@
 
 React Native wrapper for Android Design Support Library, providing Material Design to modern and also older Android devices.
 
+- [ ] Navigation View
+- [ ] Floating labels for editing text
+- [ ] Floating Action Button
+- [x] Snackbar
+- [ ] Tabs
+- [ ] Collapsing Toolbars
 
 ## Installation
 
