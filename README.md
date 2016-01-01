@@ -1,12 +1,12 @@
 # react-native-android-design-support [![npm version](https://img.shields.io/npm/v/react-native-android-design-support.svg?style=flat-square)](https://www.npmjs.com/package/react-native-android-design-support)
 
-React Native wrapper for Android Design Support Library, providing Material Design to modern and also older Android devices.
+React Native wrapper for Android Design Support Library, providing native Material Design to modern and also older Android devices.
 
 - [ ] Navigation View
 - [ ] Floating labels for editing text
 - [ ] Floating Action Button
 - [x] Snackbar
-- [ ] Tabs
+- [x] TabLayout
 - [ ] Collapsing Toolbars
 
 ## Installation
@@ -64,6 +64,14 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 ...
 ```
 
+> Make sure to update the Android Support Repository to the latest in the Android SDK Manager.
+> If it is not updated, the following error might occur while compiling the Android apk:
+>
+> ```
+> A problem occurred configuring project ':react-native-android-design-support'.
+> Could not resolve all dependencies for configuration ':react-native-android-design-support'.
+> ```
+
 
 ## Usage
 
@@ -81,3 +89,79 @@ SnackbarAndroid.show('Hello World!', SnackbarAndroid.LONG);
 // Set an action and callback on the Snackbar:
 SnackbarAndroid.show('Hi!', SnackbarAndroid.LONG, 'Show another "Hi!"', { yo: 'ya' }, (p) => { SnackbarAndroid.show(`Hi, ${JSON.stringify(p)}`) });
 ```
+
+### TabLayout
+
+The most common usage of `TabLayoutAndroid` is with `ViewPagerAndroid`:
+
+```js
+var ViewPagerWithTabExample = React.createClass({
+
+  componentDidMount: function() {
+    this.refs.tab.setViewPager(this.refs.viewPager);
+  },
+
+  render: function() {
+    return (
+      <View style={{ flex: 1 }}>
+        <TabLayoutAndroid ref="tab"
+          tabs={[
+            { text: 'First Page' },
+            { text: 'Second Page' },
+            { text: 'Third Page' }
+          ]}
+        />
+        <ViewPagerAndroid ref="viewPager" style={{ flex: 1 }}>
+          <View>
+            <Text>This is the first page.</Text>
+          </View>
+          <View>
+            <Text>This is the second page.</Text>
+          </View>
+          <View>
+            <Text>This is the third page.</Text>
+          </View>
+        </ViewPagerAndroid>
+      </View>
+    );
+  }
+});
+```
+
+> Note that the `tabs` attribute must be provided, so that the `TabLayout` can know whether the tab titles or icons to be displayed.
+
+Also, you can use it directly by just specifying the `tabs`, or giving childrens as it tabs:
+
+```js
+var TabLayoutAndroid = require('react-native-android-design-support').TabLayoutAndroid;
+
+...
+
+render: function() {
+  return (
+    <TabLayoutAndroid
+      style={styles.tabLayout}
+    >
+      <View style={styles.tab}>
+        <Text>First Tab</Text>
+      </View>
+      <View style={styles.tab}>
+        <Text>Second Tab</Text>
+      </View>
+    </TabLayoutAndroid>
+  );
+}
+
+...
+```
+
+> TODO: Handle custom events while using it independently.
+
+#### Props of `TabLayoutAndroid`
+
+- `style`
+- `tabs`: `Array: { text: String }`: The data of the tabs, required if no chirdren is provided.
+- `tabMode`: `String`: The tab mode, `fixed` or `scrollable`.
+- `normalColor`: The text color for normal tab.
+- `selectedColor`: The text color for selected tab.
+- `selectedTabIndicatorColor`: The color for selected tab indicator.

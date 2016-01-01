@@ -1,3 +1,4 @@
 module.exports = {
-  SnackbarAndroid: require('./lib/SnackbarAndroid')
+  SnackbarAndroid: require('./lib/SnackbarAndroid'),
+  TabLayoutAndroid: require('./lib/TabLayoutAndroid')
 };
