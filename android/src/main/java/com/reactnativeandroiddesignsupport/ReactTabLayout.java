@@ -1,4 +1,4 @@
-package com.reactnativeandroiddesignsupport.views.tab;
+package com.reactnativeandroiddesignsupport;
 
 import android.content.Context;
 import android.support.design.widget.TabLayout;

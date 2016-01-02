@@ -1,4 +1,4 @@
-package com.reactnativeandroiddesignsupport.views.tab;
+package com.reactnativeandroiddesignsupport;
 
 import java.util.Map;
 import javax.annotation.Nullable;
@@ -57,8 +57,12 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
     view.removeTabAt(index);
   }
 
+  // @Override
+  // public void removeAllViews(TabLayout view) {
+  //   view.removeAllTabs();
+  // }
+
   public static final int COMMAND_SET_VIEW_PAGER = 1;
-  public static final int COMMAND_SET_PAGE_WITHOUT_ANIMATION = 2;
 
   @Override
   public Map<String,Integer> getCommandsMap() {

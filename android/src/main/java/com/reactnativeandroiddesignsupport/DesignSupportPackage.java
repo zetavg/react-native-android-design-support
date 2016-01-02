@@ -12,8 +12,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.reactnativeandroiddesignsupport.views.tab.ReactTabLayoutManager;
-
 /**
  * The React package.
  */
@@ -40,6 +38,9 @@ public class DesignSupportPackage implements ReactPackage {
   @Override
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
     return Arrays.<ViewManager>asList(
+      new ReactNestedScrollViewManager(),
+      new ReactAppBarLayoutManager(),
+      new ReactCoordinatorLayoutManager(),
       new ReactTabLayoutManager()
     );
   }
