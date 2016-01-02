@@ -1,6 +1,6 @@
 # react-native-android-design-support [![npm version](https://img.shields.io/npm/v/react-native-android-design-support.svg?style=flat-square)](https://www.npmjs.com/package/react-native-android-design-support)
 
-React Native wrapper for Android Design Support Library, providing native Material Design to modern and also older Android devices.
+React Native wrapper for [Android Design Support Library](http://android-developers.blogspot.tw/2015/05/android-design-support-library.html), providing native Material Design to modern and also older Android devices.
 
 - [ ] Navigation View
 - [ ] Floating labels for editing text
