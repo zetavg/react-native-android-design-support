@@ -258,10 +258,11 @@ And this example includes the usage of `<ViewPagerAndroid>` and `<TabLayoutAndro
 var {
   CoordinatorLayoutAndroid,
   AppBarLayoutAndroid,
+  TabLayoutAndroid,
   NestedScrollViewAndroid
 } = require('react-native-android-design-support');
 
-var { ToolbarAndroid } = require('react-native');
+var { ViewPagerAndroid, ToolbarAndroid } = require('react-native');
 
 var CoordinatorLayoutWithTabExample = React.createClass({
 
