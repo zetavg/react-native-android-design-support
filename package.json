@@ -1,6 +1,6 @@
 {
   "name": "react-native-android-design-support",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native wrapper for Android Design Support Library, providing native Material Design to modern and also older Android devices.",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Neson/react-native-android-design-support/issues"
   },
-  "homepage": "https://github.com/Neson/react-native-android-design-support#readme"
+  "homepage": "https://github.com/Neson/react-native-android-design-support#readme",
+  "peerDependencies": {
+    "react-native": ">=0.15.0"
+  }
 }

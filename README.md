@@ -2,10 +2,10 @@
 
 React Native wrapper for [Android Design Support Library](http://android-developers.blogspot.tw/2015/05/android-design-support-library.html), providing native Material Design to modern and also older Android devices.
 
-- [ ] Navigation View
-- [ ] Floating labels for editing text
-- [ ] Floating Action Button
 - [x] Snackbar
+- [ ] Navigation View
+- [ ] Floating Action Button
+- [x] TextInputLayout
 - [x] TabLayout
 - [x] CoordinatorLayout
 - [x] AppBarLayout
@@ -91,6 +91,24 @@ SnackbarAndroid.show('Hello World!', SnackbarAndroid.LONG);
 // Set an action and callback on the Snackbar:
 SnackbarAndroid.show('Hi!', SnackbarAndroid.LONG, 'Show another "Hi!"', { yo: 'ya' }, (p) => { SnackbarAndroid.show(`Hi, ${JSON.stringify(p)}`) });
 ```
+
+### TextInputLayout
+
+```js
+<TextInputLayoutAndroid hint="This is the floating label">
+  <TextInput/>
+</TextInputLayoutAndroid>
+```
+
+#### Props of `TextInputLayoutAndroid`
+
+- `hint`
+- `hintAnimationEnabled`
+- `errorEnabled`
+- `error`
+- `counterEnabled`
+- `counterMaxLength`
+
 
 ### TabLayout
 

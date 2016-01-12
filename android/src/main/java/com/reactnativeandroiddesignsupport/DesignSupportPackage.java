@@ -38,6 +38,7 @@ public class DesignSupportPackage implements ReactPackage {
   @Override
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
     return Arrays.<ViewManager>asList(
+      new ReactTextInputLayoutManager(),
       new ReactNestedScrollViewManager(),
       new ReactAppBarLayoutManager(),
       new ReactCoordinatorLayoutManager(),
