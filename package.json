@@ -1,6 +1,6 @@
 {
   "name": "react-native-android-design-support",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React Native wrapper for Android Design Support Library, providing native Material Design to modern and also older Android devices.",
   "main": "index.js",
   "scripts": {
