@@ -1,26 +1,27 @@
 package com.reactnativeandroiddesignsupport;
 
-import java.util.Map;
-import javax.annotation.Nullable;
-
-import android.view.View;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.facebook.infer.annotation.Assertions;
+import com.facebook.react.bridge.JSApplicationIllegalArgumentException;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.JSApplicationIllegalArgumentException;
 import com.facebook.react.common.MapBuilder;
-import com.facebook.react.uimanager.ViewGroupManager;
-import com.facebook.react.uimanager.ReactProp;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.ViewGroupManager;
+import com.facebook.react.uimanager.annotations.ReactProp;
 
-import android.util.Log;
+import java.util.ArrayList;
+import java.util.Map;
+
+import javax.annotation.Nullable;
 
 
 public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
   public ReadableArray mTabs = null;
+  private ArrayList<TabLayout.Tab> mCustomTabs = new ArrayList<>();
 
   @Override
   public String getName() {
@@ -29,6 +30,7 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
 
   @Override
   public TabLayout createViewInstance(ThemedReactContext context) {
+    mCustomTabs.clear();
     return new TabLayout(context);
   }
 
@@ -38,7 +40,9 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
 
   @Override
   public void addView(TabLayout view, View child, int index) {
-    view.addTab(view.newTab().setCustomView(child));
+    TabLayout.Tab tab = view.newTab();
+    tab.setCustomView(child);
+    mCustomTabs.add(tab);
   }
 
   @Override
@@ -75,7 +79,6 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
   public void receiveCommand(TabLayout view, int commandType, @Nullable ReadableArray args) {
     Assertions.assertNotNull(view);
     Assertions.assertNotNull(args);
-
     switch (commandType) {
       case COMMAND_SET_VIEW_PAGER: {
         int viewPagerId = args.getInt(0);
@@ -85,7 +88,11 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
         ReadableArray tabs = args.getArray(1);
         if (tabs != null) {
           view.removeAllTabs();
-          this.populateTablayoutWithTabs(view, tabs);
+          this.populateTabLayoutWithTabs(view, tabs);
+        }
+        else if (!mCustomTabs.isEmpty()) {
+          view.removeAllTabs();
+          this.populateTabLayoutWithCustomTabs(view);
         }
 
         return;
@@ -103,7 +110,7 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
   public void setTabs(TabLayout view, ReadableArray tabs) {
     view.removeAllTabs();
     this.mTabs = tabs;
-    this.populateTablayoutWithTabs(view, tabs);
+    this.populateTabLayoutWithTabs(view, tabs);
   }
 
   @ReactProp(name = "normalColor", customType = "Color")
@@ -132,7 +139,7 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
     }
   }
 
-  private void populateTablayoutWithTabs(TabLayout view, ReadableArray tabs) {
+  private void populateTabLayoutWithTabs(TabLayout view, ReadableArray tabs) {
     try {
       int tabSize = tabs.size();
       for (int i=0; i<tabSize; i++) {
@@ -145,6 +152,19 @@ public class ReactTabLayoutManager extends ViewGroupManager<TabLayout> {
         // TODO: Deal with icons, etc.
 
         view.addTab(tab);
+      }
+    } catch (Exception e) {
+      // TODO: Handle Exception
+    }
+  }
+
+  private void populateTabLayoutWithCustomTabs(TabLayout view) {
+    try {
+      int tabSize = mCustomTabs.size();
+      for (int i=0; i < tabSize; i++) {
+
+        view.addTab(mCustomTabs.get(i));
+
       }
     } catch (Exception e) {
       // TODO: Handle Exception

@@ -15,27 +15,21 @@ package com.reactnativeandroiddesignsupport;
  */
 
 // EDITED: 1. Import additional classes
-import com.facebook.react.views.scroll.OnScrollDispatchHelper;
-import com.facebook.react.views.scroll.ReactHorizontalScrollView;
-import com.facebook.react.views.scroll.ReactHorizontalScrollViewManager;
-import com.facebook.react.views.scroll.ReactScrollView;
-import com.facebook.react.views.scroll.ReactScrollViewCommandHelper;
-import com.facebook.react.views.scroll.ReactScrollViewHelper;
-import com.facebook.react.views.scroll.ReactScrollViewManager;
-import com.facebook.react.views.scroll.ScrollEvent;
 import android.view.ViewGroup;
-import android.support.v4.widget.NestedScrollView;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.AppBarLayout;
 
-import javax.annotation.Nullable;
-import java.util.Map;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ReactProp;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
+import com.facebook.react.views.scroll.ReactHorizontalScrollView;
+import com.facebook.react.views.scroll.ReactScrollView;
+import com.facebook.react.views.scroll.ReactScrollViewCommandHelper;
 import com.facebook.react.views.view.ReactClippingViewGroupHelper;
+
+import java.util.Map;
+
+import javax.annotation.Nullable;
 /**
  * View manager for {@link ReactScrollView} components.
  *
@@ -88,7 +82,7 @@ public class ReactNestedScrollViewManager
       ReactScrollViewCommandHelper.ScrollToCommandData data) {
     scrollView.smoothScrollTo(data.mDestX, data.mDestY);
   }
-  @Override
+
   public void scrollWithoutAnimationTo(
       ReactNestedScrollView scrollView,
       ReactScrollViewCommandHelper.ScrollToCommandData data) {
@@ -97,7 +91,7 @@ public class ReactNestedScrollViewManager
   @Override
   public @Nullable Map getExportedCustomDirectEventTypeConstants() {
     return MapBuilder.builder()
-        .put(ScrollEvent.EVENT_NAME, MapBuilder.of("registrationName", "onScroll"))
+        .put("topScroll", MapBuilder.of("registrationName", "onScroll"))
         .put("topScrollBeginDrag", MapBuilder.of("registrationName", "onScrollBeginDrag"))
         .put("topScrollEndDrag", MapBuilder.of("registrationName", "onScrollEndDrag"))
         .put("topScrollAnimationEnd", MapBuilder.of("registrationName", "onScrollAnimationEnd"))
