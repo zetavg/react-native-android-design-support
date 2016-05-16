@@ -14,13 +14,16 @@ package com.reactnativeandroiddesignsupport;
  */
 
 // EDITED: 1. Import additional classes
-import com.facebook.react.views.scroll.ScrollEvent;
-
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.uimanager.UIManagerModule;
+import com.facebook.react.views.scroll.ReactHorizontalScrollView;
+import com.facebook.react.views.scroll.ReactScrollView;
+import com.facebook.react.views.scroll.ScrollEvent;
+import com.facebook.react.views.scroll.ScrollEventType;
 
 /**
  * Helper class that deals with emitting Scroll Events.
@@ -37,6 +40,7 @@ public class ReactNestedScrollViewHelper {
         ScrollEvent.obtain(
             scrollView.getId(),
             SystemClock.uptimeMillis(),
+            ScrollEventType.SCROLL,
             scrollX,
             scrollY,
             contentView.getWidth(),
